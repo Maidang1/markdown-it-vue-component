@@ -38,9 +38,9 @@ lazy_static! {
     static ref processing: Regex = Regex::new(r#"<[?][\\s\\S]*?[?]>"#).unwrap();
     static ref declaration: Regex = Regex::new(r#"<![A-Z]+\\s+[^>]*>"#).unwrap();
     static ref cdata: Regex = Regex::new(r#"<!\\[CDATA\\[[\\s\\S]*?\\]\\]>"#).unwrap();
-    static ref html_open_close_tag_re: Regex =
+    pub static ref html_open_close_tag_re: Regex =
         Regex::new(format!("^(?:{}|{})", open_tag.as_str(), close_tag.as_str()).as_str()).unwrap();
-    static ref html_self_closing_tag_re: Regex = Regex::new(
+    pub static ref html_self_closing_tag_re: Regex = Regex::new(
         format!(
             r#"^<[A-Za-z][A-Za-z0-9\\-]*{}*\\s*\\/>"#,
             attribute.as_str(),
@@ -48,7 +48,7 @@ lazy_static! {
         .as_str()
     )
     .unwrap();
-    static ref html_open_and_close_tag_in_the_same_line_re: Regex = Regex::new(
+    pub static ref html_open_and_close_tag_in_the_same_line_re: Regex = Regex::new(
         format!(
             "^<([A-Za-z][A-Za-z0-9\\-]*){}*\\s*>.*<\\/\\1\\s*>",
             attribute.as_str()
