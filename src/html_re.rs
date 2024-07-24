@@ -38,6 +38,19 @@ lazy_static! {
     static ref processing: Regex = Regex::new(r#"<[?][\\s\\S]*?[?]>"#).unwrap();
     static ref declaration: Regex = Regex::new(r#"<![A-Z]+\\s+[^>]*>"#).unwrap();
     static ref cdata: Regex = Regex::new(r#"<!\\[CDATA\\[[\\s\\S]*?\\]\\]>"#).unwrap();
+    pub static ref html_tag_re: Regex = Regex::new(
+        format!(
+            "^(?:{}|{}|{}|{}|{}|{})",
+            open_tag.as_str(),
+            close_tag.as_str(),
+            comment.as_str(),
+            processing.as_str(),
+            declaration.as_str(),
+            cdata.as_str()
+        )
+        .as_str()
+    )
+    .unwrap();
     pub static ref html_open_close_tag_re: Regex =
         Regex::new(format!("^(?:{}|{})", open_tag.as_str(), close_tag.as_str()).as_str()).unwrap();
     pub static ref html_self_closing_tag_re: Regex = Regex::new(
