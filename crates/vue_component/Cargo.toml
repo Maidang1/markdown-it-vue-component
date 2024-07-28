@@ -1,0 +1,12 @@
+[package]
+edition = "2021"
+name = "markdown_it_plugin_vue_component"
+version = "0.1.0"
+
+[dependencies]
+const_format = "0.2.32"
+lazy_static = {workspace = true}
+markdown-it = {workspace = true}
+once_cell = "1.19.0"
+regex = {workspace = true}
+testing = {workspace = true}

@@ -1,9 +1,13 @@
-[package]
-edition = "2021"
-name = "markdown-it-vue-component"
-version = "0.1.0"
-
-[dependencies]
+[workspace.dependencies]
 lazy_static = "1.5.0"
 markdown-it = {version = "0.6", default-features = false}
 regex = "1.10.5"
+testing = "0.38.1"
+
+[workspace]
+members = [
+  "crates/*",
+  "demo"
+]
+
+resolver = "2"
